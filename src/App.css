@@ -1584,6 +1584,29 @@ button[type="submit"]:hover {
   filter: none;
 }
 
+.shadow-button {
+  background: white;
+  color: var(--brand-dark);
+  border: 1px solid var(--brand-dark);
+  border-radius: 5px;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: -5px 5px 0px var(--secondary);
+}
+
+.shadow-button:hover {
+  background: var(--secondary);
+  color: var(--brand-dark);
+  transform: translateY(-2px);
+  box-shadow: -8px 8px 0px var(--white);
+}
+
 @media (max-width: 1200px) {
   .products-grid,
   .products-section h2 {
