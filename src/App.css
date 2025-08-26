@@ -2047,155 +2047,8 @@ Separator Section
   }
 }
 
-/* General Styling */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* The body background is set to white. 
-  It's often better to put this in a global CSS file like index.css.
-*/
-
-
-/* Keyframes for the fade-in animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* FAQ Container */
-.faq-container {
-  background-color: #ffffff;
-  width: 100%;
-
-  /* ===== CENTERING FIX HERE ===== */
-  /* This sets 50px margin for top/bottom and 'auto' for left/right, which centers the container. */
-  margin: 50px auto;
-
-  /* Look & Feel */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
-
-  /* Animation */
-  animation: fadeIn 0.5s ease-out;
-}
-
-.faq-title {
-  text-align: center;
-  font-size: 28px;
-  font-weight: 600;
-  padding: 30px 20px;
-  color: #222;
-}
-
-/* Accordion Styling */
-.faq-item {
-  border-bottom: 1px solid #e9e9e9; /* Slightly lighter border */
-}
-
-.faq-item:first-of-type {
-  border-top: 1px solid #e9e9e9;
-}
-
-.faq-question {
-  background: none;
-  border: none;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: left;
-  padding: 20px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #333;
-  cursor: pointer;
-}
-
-.faq-question span {
-  flex-grow: 1;
-  padding-right: 15px;
-}
-
-.faq-question i {
-  font-size: 14px;
-  color: #555;
-  transition: transform 0.3s ease-in-out;
-}
-
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-out, padding 0.3s ease-out;
-  color: #555;
-  line-height: 1.6;
-  font-size: 15px;
-}
-
-.faq-answer p {
-  padding: 0 20px 20px;
-}
-
-/* Active State Styling */
-.faq-item.active .faq-question {
-  color: #000;
-}
-
-.faq-item.active .faq-question i {
-  transform: rotate(180deg);
-}
-
-.faq-item.active .faq-answer {
-  max-height: 300px;
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-  body {
-    padding: 0;
-  }
-
-  .faq-container {
-    margin: 0;
-    border-radius: 0;
-    box-shadow: none;
-    max-width: 100%;
-  }
-
-  .faq-title {
-    font-size: 24px;
-    padding: 25px 15px;
-  }
-
-  .faq-question i {
-    font-size: 14px;
-    color: #555;
-    transition: transform 0.3s ease-in-out;
-  }
-  .faq-question {
-    padding: 18px 15px;
-    font-size: 15px;
-  }
-
-  .faq-answer {
-    font-size: 14px;
-  }
-
-  .faq-answer p {
-    padding: 0 15px 18px;
-  }
-}
-
 /*=============================================================================
-    FAQ Section (Updated & Responsive)
+    FAQ Section (Updated & Responsive)
 ==============================================================================*/
 
 /*
@@ -2203,133 +2056,132 @@ Separator Section
  * It now matches the 'max-width' of your site's main .container class for consistency.
  * The 'padding' ensures there's space on smaller screens.
 */
-
 .faq-container {
-background-color: var(--white);
-width: 100%;
-max-width: 1200px; /* MATCHES your .container class */
-margin: 80px auto; /* Adds vertical spacing and centers it horizontally */
-padding: 0 20px; /* Adds horizontal padding for content spacing */
-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-border-radius: 12px;
-animation: fadeIn 0.5s ease-out;
+    background-color: var(--white);
+    width: 100%;
+    max-width: 1200px; /* MATCHES your .container class */
+    margin: 80px auto; /* Adds vertical spacing and centers it horizontally */
+    padding: 0 20px; /* Adds horizontal padding for content spacing */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    animation: fadeIn 0.5s ease-out;
 }
 
 /* Keyframes for the fade-in animation */
 @keyframes fadeIn {
-from {
-opacity: 0;
-transform: translateY(10px);
-}
-to {
-opacity: 1;
-transform: translateY(0);
-}
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .faq-title {
-text-align: center;
-font-size: 2.25rem; /* 36px */
-font-weight: 600;
-padding: 40px 0;
-color: var(--text);
+    text-align: center;
+    font-size: 2.25rem; /* 36px */
+    font-weight: 600;
+    padding: 40px 0;
+    color: var(--text);
 }
 
 /* Accordion Styling */
 .faq-item {
-border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 }
 
 .faq-item:first-of-type {
-border-top: 1px solid var(--border);
+    border-top: 1px solid var(--border);
 }
 
 .faq-question {
-background: none;
-border: none;
-width: 100%;
-display: flex;
-justify-content: space-between;
-align-items: center;
-text-align: left;
-padding: 20px 0; /* Padding adjusted for the new container */
-font-size: 1.1rem; /* 17.6px */
-font-weight: 600;
-color: var(--text);
-cursor: pointer;
-transition: color 0.2s ease;
+    background: none;
+    border: none;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 20px 0; /* Padding adjusted for the new container */
+    font-size: 1.1rem; /* 17.6px */
+    font-weight: 600;
+    color: var(--text);
+    cursor: pointer;
+    transition: color 0.2s ease;
 }
 
 .faq-question:hover {
-color: var(--primary);
+    color: var(--primary);
 }
 
 .faq-question span {
-flex-grow: 1;
-padding-right: 15px;
+    flex-grow: 1;
+    padding-right: 15px;
 }
 
 .faq-question i {
-font-size: 14px;
-color: var(--muted);
-transition: transform 0.3s ease-in-out;
+    font-size: 14px;
+    color: var(--muted);
+    transition: transform 0.3s ease-in-out;
 }
 
 .faq-answer {
-max-height: 0;
-overflow: hidden;
-transition: max-height 0.3s ease-out, padding-bottom 0.3s ease-out;
-color: var(--muted);
-line-height: 1.6;
-font-size: 1rem; /* 16px */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding-bottom 0.3s ease-out;
+    color: var(--muted);
+    line-height: 1.6;
+    font-size: 1rem; /* 16px */
 }
 
 .faq-answer p {
-padding: 0 0 20px 0; /* Padding adjusted */
-margin: 0;
+    padding: 0 0 20px 0; /* Padding adjusted */
+    margin: 0;
 }
 
 
 /* Active State Styling */
 .faq-item.active .faq-question {
-color: var(--primary);
+    color: var(--primary);
 }
 
 .faq-item.active .faq-question i {
-transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
 /* A more dynamic max-height for answers of varying lengths */
 .faq-item.active .faq-answer {
-max-height: 500px;
+    max-height: 500px;
 }
 
 
 /* Responsive Design */
 @media (max-width: 768px) {
-.faq-container {
-margin: 40px auto;
-}
-.faq-title {
-font-size: 1.75rem; /* 28px */
-}
-.faq-question {
-font-size: 1rem;
-}
-.faq-answer {
-font-size: 0.95rem;
-}
+    .faq-container {
+        margin: 40px auto;
+    }
+    .faq-title {
+        font-size: 1.75rem; /* 28px */
+    }
+    .faq-question {
+        font-size: 1rem;
+    }
+    .faq-answer {
+        font-size: 0.95rem;
+    }
 }
 
 @media (max-width: 600px) {
-/* On mobile, the container becomes full-width with no shadow or rounded corners */
-.faq-container {
-margin: 0;
-border-radius: 0;
-box-shadow: none;
-padding: 0 20px; /* Keep some padding for content */
-}
-.faq-title {
-padding: 30px 0;
-}
+    /* On mobile, the container becomes full-width with no shadow or rounded corners */
+    .faq-container {
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 0 20px; /* Keep some padding for content */
+    }
+    .faq-title {
+        padding: 30px 0;
+    }
 }
