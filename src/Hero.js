@@ -7,10 +7,11 @@ const Hero = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [formData, setFormData] = useState({
     firstName: "",
-    lastName: "",
+    // lastName: "",
     phone: "",
+    email: "",
     propertyLocation: "",
-    preferredOffice: "",
+    // preferredOffice: "",
     terms: false,
   });
   const [errors, setErrors] = useState({});
@@ -38,6 +39,13 @@ const Hero = () => {
     if (!formData.phone.trim()) return "Phone number is required";
     if (!itiRef.current.isValidNumber())
       return "Please enter a valid phone number";
+    return "";
+  };
+
+  const validateEmail = (email) => {
+    if (!email.trim()) return "Email is required";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+      return "Please enter a valid email address";
     return "";
   };
 
@@ -77,18 +85,21 @@ const Hero = () => {
       case "firstName":
         error = validateName(formData.firstName);
         break;
-      case "lastName":
-        error = validateName(formData.lastName);
-        break;
+      // case "lastName":
+      //   error = validateName(formData.lastName);
+      //   break;
       case "phone":
         error = validatePhone();
+        break;
+      case "email":
+        error = validateEmail(formData.email);
         break;
       case "propertyLocation":
         error = validateSelect(formData.propertyLocation, "Property Location");
         break;
-      case "preferredOffice":
-        error = validateSelect(formData.preferredOffice, "Preferred Office");
-        break;
+      // case "preferredOffice":
+      //   error = validateSelect(formData.preferredOffice, "Preferred Office");
+      //   break;
       case "terms":
         error = validateTerms(formData.terms);
         break;
@@ -98,111 +109,42 @@ const Hero = () => {
     setErrors((prev) => ({ ...prev, [name]: error }));
   };
 
-  // Inside your Hero.js component
-
-// Inside your Hero.js file, replace the entire handleSubmit function
-
-// const handleSubmit = (e) => {
-//   e.preventDefault();
-
-//   const newErrors = {
-//     firstName: validateName(formData.firstName),
-//     lastName: validateName(formData.lastName),
-//     phone: validatePhone(),
-//     propertyLocation: validateSelect(formData.propertyLocation, "Property Location"),
-//     preferredOffice: validateSelect(formData.preferredOffice, "Preferred Office"),
-//     terms: validateTerms(formData.terms),
-//   };
-
-//   setErrors(newErrors);
-//   setTouched({
-//     firstName: true,
-//     lastName: true,
-//     phone: true,
-//     propertyLocation: true,
-//     preferredOffice: true,
-//     terms: true,
-//   });
-
-//   const isFormValid = Object.values(newErrors).every((error) => error === "");
-
-//   if (isFormValid) {
-//     const scriptURL = "https://script.google.com/macros/s/AKfycbx4jGP0hxuB_45jE2d1R8mDt2KXlK8kXJhRMVJcgtwD-mh9BisCk74P4qpTc7290c7fEw/exec";
-    
-//     const data = new FormData();
-//     data.append('firstName', formData.firstName);
-//     data.append('lastName', formData.lastName);
-//     data.append('phone', formData.phone);
-//     data.append('propertyLocation', formData.propertyLocation);
-//     data.append('preferredOffice', formData.preferredOffice);
-//     data.append('terms', formData.terms);
-
-//     const submissionPromise = fetch(scriptURL, {
-//       method: 'POST',
-//       body: data,
-//       mode: 'no-cors' // This mode bypasses the preflight check
-//     });
-
-//     // Use toast.promise to automatically handle loading, success, and error states
-//     toast.promise(
-//       submissionPromise,
-//       {
-//         pending: 'Submitting your form...',
-//         success: 'Thank you! Your form has been submitted successfully.',
-//         error: 'There was an error submitting your form. Please try again.'
-//       }
-//     )
-//     .then(() => {
-//       // This block runs after the submission is successful.
-//       // Reset the form state and key to clear the fields.
-//       setFormData({
-//         firstName: '', lastName: '', phone: '',
-//         propertyLocation: '', preferredOffice: '', terms: false
-//       });
-//       setErrors({});
-//       setTouched({});
-//       setFormKey(Date.now());
-//     })
-//     .catch(error => {
-//       // The error toast will be shown automatically by toast.promise
-//       console.error("Error!", error.message);
-//     });
-//   }
-// };
-
 const handleSubmit = (e) => {
   e.preventDefault();
 
   const newErrors = {
     firstName: validateName(formData.firstName),
-    lastName: validateName(formData.lastName),
+    // lastName: validateName(formData.lastName),
     phone: validatePhone(),
+    email: validateEmail(formData.email),
     propertyLocation: validateSelect(formData.propertyLocation, "Property Location"),
-    preferredOffice: validateSelect(formData.preferredOffice, "Preferred Office"),
+    // preferredOffice: validateSelect(formData.preferredOffice, "Preferred Office"),
     terms: validateTerms(formData.terms),
   };
 
   setErrors(newErrors);
   setTouched({
     firstName: true,
-    lastName: true,
+    // lastName: true,
     phone: true,
+    email: true,
     propertyLocation: true,
-    preferredOffice: true,
+    // preferredOffice: true,
     terms: true,
   });
 
   const isFormValid = Object.values(newErrors).every((error) => error === "");
 
   if (isFormValid) {
-    const scriptURL = "https://script.google.com/macros/s/AKfycbzGV3UPfUXiJjHxzoaYWi-7Ipj5K60w9U1LIbanEqwBojqtpCXSxTxiElRf2uoXVIMG/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbxDLA0CiroJ-5qHBxD63V-OzaqlfqW0mZnHBOuI2fxe5FA7MmauGXmYqnphzrEsuTIN/exec";
     
     const data = new FormData();
     data.append('firstName', formData.firstName);
-    data.append('lastName', formData.lastName);
+    // data.append('lastName', formData.lastName);
     data.append('phone', formData.phone);
+    data.append('email', formData.email);
     data.append('propertyLocation', formData.propertyLocation);
-    data.append('preferredOffice', formData.preferredOffice);
+    // data.append('preferredOffice', formData.preferredOffice);
     data.append('terms', formData.terms);
 
     const submissionPromise = fetch(scriptURL, {
@@ -258,8 +200,8 @@ const handleSubmit = (e) => {
 
       // Reset the form state and key to clear the fields.
       setFormData({
-        firstName: '', lastName: '', phone: '',
-        propertyLocation: '', preferredOffice: '', terms: false
+        firstName: '', phone: '', email: '',
+        propertyLocation: '', terms: false
       });
       setErrors({});
       setTouched({});
@@ -273,17 +215,41 @@ const handleSubmit = (e) => {
   // --- SIDE EFFECTS (API Calls & Plugin Initialization) ---
 
   useEffect(() => {
-    const FALLBACK_CITIES = [
-      "Mumbai",
-      "Delhi",
-      "Bangalore",
-      "Chennai",
-      "Kolkata",
-      "Hyderabad",
-      "Pune",
-      "Ahmedabad",
-      "Jaipur",
-      "Lucknow",
+    const FALLBACK_CITIES = [                           
+      "Betul",
+      "Bhind",
+      "Bhopal",
+      "Burhanpur",
+      "Chhatarpur",
+      "Chhindwara",
+      "Damoh",
+      "Datia",
+      "Dewas",
+      "Guna",
+      "Gwalior",
+      "Indore",
+      "Itarsi",
+      "Jabalpur",
+      "Katni",
+      "Khandwa",
+      "Khargone",
+      "Mandsaur",
+      "Morena",
+      "Nagda",
+      "Narmadapuram",
+      "Neemach",
+      "Pithampur",
+      "Ratlam",
+      "Rewa",
+      "Sagar",
+      "Satna",
+      "Sehore",
+      "Seoni",
+      "Shajapur",
+      "Shivpuri",
+      "Singrauli",
+      "Ujjain",
+      "Vidisha"
     ];
     const loadIndianCities = async () => {
       setIsLoading(true);
@@ -403,7 +369,7 @@ const handleSubmit = (e) => {
                   id="firstName"
                   name="firstName"
                   type="text"
-                  placeholder="First Name"
+                  placeholder="Full Name"
                   value={formData.firstName}
                   onChange={handleInputChange}
                   onBlur={handleFieldBlur}
@@ -420,7 +386,7 @@ const handleSubmit = (e) => {
                 )}
               </div>
 
-              <div className="field">
+              {/* <div className="field">
                 <input
                   id="lastName"
                   name="lastName"
@@ -440,7 +406,7 @@ const handleSubmit = (e) => {
                 {touched.lastName && errors.lastName && (
                   <div className="invalid-feedback">{errors.lastName}</div>
                 )}
-              </div>
+              </div> */}
 
               <div className="field">
                 <input
@@ -465,6 +431,28 @@ const handleSubmit = (e) => {
               </div>
 
               <div className="field">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  onBlur={handleFieldBlur}
+                  className={
+                    touched.email
+                      ? errors.email
+                        ? "is-invalid"
+                        : "is-valid"
+                      : ""
+                  }
+                />
+                {touched.email && errors.email && (
+                  <div className="invalid-feedback">{errors.email}</div>
+                )}
+              </div>
+
+              <div className="field">
                 <select
                   id="propertyLocation"
                   name="propertyLocation"
@@ -479,14 +467,52 @@ const handleSubmit = (e) => {
                       : ""
                   }
                 >
-                  <option value="" disabled>
+                  {/* <option value="" disabled>
                     {isLoading ? "Loading cities…" : "Select Property Location"}
                   </option>
                   {cities.map((city) => (
                     <option key={`prop-${city}`} value={city}>
                       {city}
                     </option>
-                  ))}
+                  ))} */}
+                  <option value="" disabled selected>
+                    {isLoading ? "Loading cities…" : "Select Property Location"}
+                  </option>
+                  <option value="Betul">Betul</option>
+                  <option value="Bhind">Bhind</option>
+                  <option value="Bhopal">Bhopal</option>
+                  <option value="Burhanpur">Burhanpur</option>
+                  <option value="Chhatarpur">Chhatarpur</option>
+                  <option value="Chhindwara">Chhindwara</option>
+                  <option value="Damoh">Damoh</option>
+                  <option value="Datia">Datia</option>
+                  <option value="Dewas">Dewas</option>
+                  <option value="Guna">Guna</option>
+                  <option value="Gwalior">Gwalior</option>
+                  <option value="Indore">Indore</option>
+                  <option value="Itarsi">Itarsi</option>
+                  <option value="Jabalpur">Jabalpur</option>
+                  <option value="Katni">Katni</option>
+                  <option value="Khandwa">Khandwa</option>
+                  <option value="Khargone">Khargone</option>
+                  <option value="Mandsaur">Mandsaur</option>
+                  <option value="Morena">Morena</option>
+                  <option value="Nagda">Nagda</option>
+                  <option value="Narmadapuram">Narmadapuram</option>
+                  <option value="Neemach">Neemach</option>
+                  <option value="Pithampur">Pithampur</option>
+                  <option value="Ratlam">Ratlam</option>
+                  <option value="Rewa">Rewa</option>
+                  <option value="Sagar">Sagar</option>
+                  <option value="Satna">Satna</option>
+                  <option value="Sehore">Sehore</option>
+                  <option value="Seoni">Seoni</option>
+                  <option value="Shajapur">Shajapur</option>
+                  <option value="Shivpuri">Shivpuri</option>
+                  <option value="Singrauli">Singrauli</option>
+                  <option value="Ujjain">Ujjain</option>
+                  <option value="Vidisha">Vidisha</option>
+
                 </select>
                 {touched.propertyLocation && errors.propertyLocation && (
                   <div className="invalid-feedback">
@@ -495,7 +521,7 @@ const handleSubmit = (e) => {
                 )}
               </div>
 
-              <div className="field">
+              {/* <div className="field">
                 <select
                   id="preferredOffice"
                   name="preferredOffice"
@@ -527,6 +553,7 @@ const handleSubmit = (e) => {
                   </div>
                 )}
               </div>
+            */}
 
               <label className="terms">
                 <input

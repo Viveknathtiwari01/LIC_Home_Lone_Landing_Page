@@ -6,12 +6,13 @@ const Footer = () => {
     <footer className="site-footer">
       <div className="footer-container">
         <div className="footer-top">
-          <p className="copyright-text">© 2025 Manbhadra Fincorp Ltd.</p>
+          <p className="copyright-text">© 2025 LIC Housing Finance Ltd.</p>
           <div className="footer-links">
             <a href="/terms">Terms</a>
             <a href="/privacy">Privacy</a>
             <a href="/cookies">Cookies</a>
           </div>
+          
           <div className="social-icons">
             <a href="https://www.facebook.com/manbhadrafincorp/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
               <FaFacebookF />
@@ -29,6 +30,10 @@ const Footer = () => {
         </div>
         
         <div className="footer-bottom">
+          <p>
+            <strong>Authorized Partner:</strong> Manbhadra Associates Pvt. Ltd.
+          </p>
+          <br />
           <p>
             <strong>Registered Address:</strong> Office No. 311, 3rd Floor, Royal Ratan, 07, MG Road, Indore - 452001, Madhya Pradesh
           </p>
