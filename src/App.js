@@ -32,18 +32,19 @@ function App() {
         theme="light"
       />
 
-      <h66ader className="site-header">
+      <header className="site-header">
         <div className="container header-content">
           <div className="brand">
             <img src="/LIC.png" alt="LIC HFL" className="brand-logo" />
           </div>
           <div className="header-actions">
-            <button className="toll-free-btn">
+            {/* --- MODIFIED LINE --- */}
+            <a href="tel:9039106555" className="toll-free-btn">
               Instant Help | 9039106555
-            </button>
+            </a>
           </div>
         </div>
-      </h66ader>
+      </header>
 
       <main>
         <Hero/>

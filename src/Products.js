@@ -26,9 +26,9 @@ function Products() {
           ))}
         </div>
 
-        <button class="shadow-button">
+        <a href="#" class="shadow-button">
       Explore Our Products →
-    </button>
+    </a>
       </div>
     </section>
   );

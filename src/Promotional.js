@@ -22,7 +22,7 @@ const Promotional = () => {
               <div className="stat-label">Operating Center</div>
             </div>
           </div>
-          <button className="cta-button">Apply For Home Loan Now →</button>
+          <a href="#" className="cta-button">Apply For Loan →</a>
         </div>
       </div>
       <div className="decorative-elements">
