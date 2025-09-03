@@ -724,7 +724,7 @@ button[type="submit"]:hover {
   background: var(--brand-dark);
   color: white;
   transform: translateY(-2px);
-  box-shadow: -8px 8px 0px var(--brand-dark);
+  box-shadow: -8px 8px 0px var(--secondary);
 }
 
 .decorative-elements {
