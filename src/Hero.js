@@ -340,7 +340,7 @@ const handleSubmit = (e) => {
     <section id="home" className="hero">
       <div className="container hero-content">
         <div className="hero-text-container">
-          <div className="hero-text-box orange-bg">
+          {/* <div className="hero-text-box orange-bg">
             <h2>APNE GHAR KI </h2>
             <h2> AZAADI OFFER</h2>
           </div>
@@ -355,7 +355,7 @@ const handleSubmit = (e) => {
               with Home Loans Starting
             </h4>
             <h1>@7.50%* ROI</h1>
-          </div>
+          </div> */}
         </div>
 
         <div className="hero-form">
