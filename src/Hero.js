@@ -12,6 +12,7 @@ const Hero = () => {
     email: "",
     propertyLocation: "",
     // preferredOffice: "",
+    profession: "",
     terms: false,
   });
   const [errors, setErrors] = useState({});
@@ -100,6 +101,9 @@ const Hero = () => {
       // case "preferredOffice":
       //   error = validateSelect(formData.preferredOffice, "Preferred Office");
       //   break;
+      case "profession":
+        error = validateSelect(formData.profession, "Profession");
+        break;
       case "terms":
         error = validateTerms(formData.terms);
         break;
@@ -119,6 +123,7 @@ const handleSubmit = (e) => {
     email: validateEmail(formData.email),
     propertyLocation: validateSelect(formData.propertyLocation, "Property Location"),
     // preferredOffice: validateSelect(formData.preferredOffice, "Preferred Office"),
+    profession: validateSelect(formData.profession, "Profession"),
     terms: validateTerms(formData.terms),
   };
 
@@ -130,13 +135,14 @@ const handleSubmit = (e) => {
     email: true,
     propertyLocation: true,
     // preferredOffice: true,
+    profession: true,
     terms: true,
   });
 
   const isFormValid = Object.values(newErrors).every((error) => error === "");
 
   if (isFormValid) {
-    const scriptURL = "https://script.google.com/macros/s/AKfycbxDLA0CiroJ-5qHBxD63V-OzaqlfqW0mZnHBOuI2fxe5FA7MmauGXmYqnphzrEsuTIN/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbysurXvoSQ983xDCQSqpmIj_EaBU4mfWn5Mgnc_iC8j3sCGpkGV44kIR6HihHYcxlN2RQ/exec";
     
     const data = new FormData();
     data.append('firstName', formData.firstName);
@@ -145,6 +151,7 @@ const handleSubmit = (e) => {
     data.append('email', formData.email);
     data.append('propertyLocation', formData.propertyLocation);
     // data.append('preferredOffice', formData.preferredOffice);
+    data.append('profession', formData.profession);
     data.append('terms', formData.terms);
 
     const submissionPromise = fetch(scriptURL, {
@@ -201,7 +208,7 @@ const handleSubmit = (e) => {
       // Reset the form state and key to clear the fields.
       setFormData({
         firstName: '', phone: '', email: '',
-        propertyLocation: '', terms: false
+        propertyLocation: '', profession: '', terms: false
       });
       setErrors({});
       setTouched({});
@@ -361,7 +368,7 @@ const handleSubmit = (e) => {
         <div className="hero-form">
           <div className="card">
             <header>
-              <h3>Registration & Login Page</h3>
+              <h3>Registration & Login</h3>
             </header>
             <form id="regForm" key={formKey} onSubmit={handleSubmit} noValidate>
               <div className="field">
@@ -517,6 +524,35 @@ const handleSubmit = (e) => {
                 {touched.propertyLocation && errors.propertyLocation && (
                   <div className="invalid-feedback">
                     {errors.propertyLocation}
+                  </div>
+                )}
+              </div>
+
+              <div className="field">
+                <select
+                  id="profession"
+                  name="profession"
+                  value={formData.profession}
+                  onChange={handleInputChange}
+                  onBlur={handleFieldBlur}
+                  className={
+                    touched.profession
+                      ? errors.profession
+                        ? "is-invalid"
+                        : "is-valid"
+                      : ""
+                  }
+                >
+                  <option value="" disabled selected>
+                    What is Your Profession?
+                  </option>
+                  <option value="Salaried">Salaried</option>
+                  <option value="Business Owner">Business Owner</option>
+                  <option value="Retired / pensioner">Retired / pensioner</option>
+                </select>
+                {touched.profession && errors.profession && (
+                  <div className="invalid-feedback">
+                    {errors.profession}
                   </div>
                 )}
               </div>
